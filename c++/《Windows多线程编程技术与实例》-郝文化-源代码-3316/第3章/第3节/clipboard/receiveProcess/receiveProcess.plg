@@ -1,0 +1,35 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: receiveProcess - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "D:\DOCUME~1\wzy\LOCALS~1\Temp\RSP55.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/receiveProcess.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
+"F:\WindowsÍøÂç±à³Ì\chap3\¼ôÌù°å\receiveProcess\receiveProcessDlg.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\wzy\LOCALS~1\Temp\RSP55.tmp" 
+Creating temporary file "D:\DOCUME~1\wzy\LOCALS~1\Temp\RSP56.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/receiveProcess.pdb" /debug /machine:I386 /out:"Debug/receiveProcess.exe" /pdbtype:sept 
+".\Debug\receiveProcess.obj"
+".\Debug\receiveProcessDlg.obj"
+".\Debug\StdAfx.obj"
+".\Debug\receiveProcess.res"
+]
+Creating command line "link.exe @D:\DOCUME~1\wzy\LOCALS~1\Temp\RSP56.tmp"
+<h3>Output Window</h3>
+Compiling...
+receiveProcessDlg.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+receiveProcess.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

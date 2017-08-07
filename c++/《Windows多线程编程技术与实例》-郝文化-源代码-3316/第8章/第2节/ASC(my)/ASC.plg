@@ -1,0 +1,30 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ASC - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\wzy\LOCALS~1\Temp\RSP27.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/ASC.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\思维项目\myASC\ASC(my)\SearchLogDlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\wzy\LOCALS~1\Temp\RSP27.tmp" 
+<h3>Output Window</h3>
+Compiling...
+SearchLogDlg.cpp
+F:\思维项目\myASC\ASC(my)\SearchLogDlg.cpp(127) : error C2065: 'strSize' : undeclared identifier
+F:\思维项目\myASC\ASC(my)\SearchLogDlg.cpp(127) : error C2228: left of '.Format' must have class/struct/union type
+F:\思维项目\myASC\ASC(my)\SearchLogDlg.cpp(133) : error C2065: 'strTimeStamp' : undeclared identifier
+F:\思维项目\myASC\ASC(my)\SearchLogDlg.cpp(133) : error C2228: left of '.Format' must have class/struct/union type
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+SearchLogDlg.obj - 4 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

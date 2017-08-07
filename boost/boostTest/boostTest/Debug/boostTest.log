@@ -1,0 +1,2 @@
+﻿  boostTest.cpp
+d:\vs2015_proj\boost\boosttest\boosttest\boosttest.cpp : fatal error C1041: 无法打开程序数据库“D:\vs2015_proj\boost\boostTest\boostTest\Debug\vc140.idb”；如果要将多个 CL.EXE 写入同一个 .PDB 文件，请使用 /FS

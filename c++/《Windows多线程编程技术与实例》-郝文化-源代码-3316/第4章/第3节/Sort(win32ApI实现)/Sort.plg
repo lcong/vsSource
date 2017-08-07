@@ -1,0 +1,27 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Sort - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\wzy\LOCALS~1\Temp\RSP2A.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_AFXDLL" /Fp"Debug/Sort.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\program\第五章\3\Sort(win32ApI实现)\Sort.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\wzy\LOCALS~1\Temp\RSP2A.tmp" 
+<h3>Output Window</h3>
+Compiling...
+Sort.cpp
+e:\program\第五章\3\sort(win32api实现)\resource.h(29) : warning C4005: 'IDC_STATIC' : macro redefinition
+        c:\program files\microsoft visual studio\vc98\mfc\include\afxres.h(290) : see previous definition of 'IDC_STATIC'
+
+
+
+<h3>Results</h3>
+Sort.obj - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

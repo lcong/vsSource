@@ -1,0 +1,28 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DemoWindowsXpBoot - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "D:\DOCUME~1\wzy\LOCALS~1\Temp\RSP16.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/DemoWindowsXpBoot.pdb" /debug /machine:I386 /out:"Debug/DemoWindowsXpBoot.exe" /pdbtype:sept 
+".\Debug\DemoWindowsXpBoot.obj"
+".\Debug\DemoWindowsXpBootDlg.obj"
+".\Debug\DynBar.obj"
+".\Debug\StdAfx.obj"
+".\Debug\DemoWindowsXpBoot.res"
+]
+Creating command line "link.exe @D:\DOCUME~1\wzy\LOCALS~1\Temp\RSP16.tmp"
+<h3>Output Window</h3>
+Linking...
+
+
+
+<h3>Results</h3>
+DemoWindowsXpBoot.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

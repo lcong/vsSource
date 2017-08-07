@@ -1,0 +1,5 @@
+﻿  stdafx.cpp
+  helloException.cpp
+d:\vs2015_proj\stl\helloexception\helloexception\helloexception.cpp(133): warning C4101: “str”: 未引用的局部变量
+  helloException.vcxproj -> D:\vs2015_proj\stl\helloException\x64\Debug\helloException.exe
+  helloException.vcxproj -> D:\vs2015_proj\stl\helloException\x64\Debug\helloException.pdb (Full PDB)
