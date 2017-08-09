@@ -32,8 +32,16 @@ int main()
     a[0] = "Boris";
     a.at (1) = "Anton";
     *a.rbegin() = "Caesar";
-    std::sort (a.begin(), a.end());
-    
+
+	for (array::const_iterator it = a.begin(); it != a.end(); ++it)
+	{
+		cout << *it << endl;
+	}
+
+	std::sort (a.begin(), a.end());
+
+	cout <<"after sort" << endl;
+
     for (array::const_iterator it = a.begin(); it != a.end(); ++it)
     {
         cout << *it << endl;
@@ -56,19 +64,20 @@ int main()
     string s = "David";
     cout << boost::make_tuple (boost::ref (s), "Schaeling", 41) << endl;
     
-	typedef boost::tuple<string, string, int> person3;
-    person3 p3 = boost::make_tuple ("Rockcong", "Schaeling", 43);
+    person1 p3 = boost::make_tuple ("Rockcong", "Schaeling", 43);
     p3.get<1>() = "Becker";
     cout << p3 << endl;
-    person3 p4 = boost::make_tuple ("Boris", "Schaeling", 43);
-    person3 p5 = boost::make_tuple ("Boris", "Becker", 43);
+    person1 p4 = boost::make_tuple ("Boris", "Schaeling", 43);
+    person1 p5 = boost::make_tuple ("Boris", "Becker", 43);
     cout << (p4 != p5) << endl;
     
-	vector<string> v (100);
-    progress_display pd (v.size());
+	vector<string> vStr (100);
+    progress_display pd (vStr.size());
     vector<string>::iterator pos;
     
-    for (pos = v.begin(); pos != v.end(); ++pos)
+	cout << "Vector vStr:";
+
+    for (pos = vStr.begin(); pos != vStr.end(); ++pos)
     {
         cout << *pos << endl;
         ++pd;
@@ -78,7 +87,7 @@ int main()
 	Print<int> print;
 	fill(vInt.begin(), vInt.end(), 5);
 
-	cout << "Vector v:";
+	cout << "Vector vInt:";
 	for_each(vInt.begin(), vInt.end(), print);
 	cout << endl;
 
