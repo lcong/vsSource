@@ -3,10 +3,12 @@
 #include <boost/tuple/tuple_io.hpp>
 #include <boost/tuple/tuple_comparison.hpp>
 #include <boost/progress.hpp>
+#include <boost/thread.hpp> 
 #include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <boost/asio.hpp> 
 #include "boostTest.h"
 #include <boost/system/error_code.hpp> 
 
@@ -17,122 +19,125 @@ using namespace boost;
 template<class T>
 class Print
 {
-public:
-	void operator()(T&t)
-	{
-		cout << t << "";
-
-	}
-
+    public:
+        void operator() (T&t)
+        {
+            cout << t << "";
+        }
+        
 };
 
-class application_category :
-	public boost::system::error_category
+
+void handler1(const boost::system::error_code &ec)
 {
-public:
-	const char *name(void ) const { return "application"; }
-	std::string message(int ev) const { return "error message"; }
-};
+	std::cout << "5 s." << std::endl;
+}
 
-application_category cat;
+
+void handler2(const boost::system::error_code &ec)
+{
+	std::cout << "10 s." << std::endl;
+}
+
+boost::asio::io_service io_service1;
+boost::asio::io_service io_service2;
+
+void run1()
+{
+	io_service1.run();
+}
+
+void run2()
+{
+	io_service2.run();
+}
 
 
 
 int main()
 {
+
+	boost::asio::deadline_timer timer1(io_service1, boost::posix_time::seconds(5));
+	timer1.async_wait(handler1);
+	boost::asio::deadline_timer timer2(io_service2, boost::posix_time::seconds(5));
+	timer2.async_wait(handler2);
+	boost::thread thread1(run1);
+	boost::thread thread2(run2);
+	thread1.join();
+	thread2.join();
+
     typedef boost::array<std::string, 3> array;
-    array a;
-    a[0] = "Boris";
-    a.at (1) = "Anton";
-    *a.rbegin() = "Caesar";
-    std::sort (a.begin(), a.end());
+    array a1;
+    a1[0] = "Boris";
+    a1.at (1) = "Anton";
+    *a1.rbegin() = "Caesar";
     
-    for (array::const_iterator it = a.begin(); it != a.end(); ++it)
+    for (array::const_iterator it = a1.begin(); it != a1.end(); ++it)
     {
         cout << *it << endl;
     }
     
-    cout << a.size() << endl;
-    cout << a.max_size() << endl;
+    std::sort (a1.begin(), a1.end());
+    cout << "after sort" << endl;
     
-	
-	typedef boost::array<string, 3> array2;
-    array2 a2 = { "Boris", "Anton", "Caesar" };
+    for (array::const_iterator it = a1.begin(); it != a1.end(); ++it)
+    {
+        cout << *it << endl;
+    }
     
-	typedef boost::tuple<string, string, int> person1;
-    person1 p1 ("Boris", "Schaeling", 43);
-    std::cout << p1 << std::endl;
-    
-	typedef boost::tuple<string, string> person2;
-    person2 p2 ("Boris", "Schaeling");
-    cout << p2 << endl;
+    cout << a1.size() << endl;
+    cout << a1.max_size() << endl;
+    array a2 = { "Boris", "Anton", "Caesar" };
+    typedef boost::tuple<string, string, int> person;
+    person p1 ("Boris", "Schaeling", 43);
     string s = "David";
     cout << boost::make_tuple (boost::ref (s), "Schaeling", 41) << endl;
-    
-	typedef boost::tuple<string, string, int> person3;
-    person3 p3 = boost::make_tuple ("Rockcong", "Schaeling", 43);
+    person p3 = boost::make_tuple ("Rockcong", "Schaeling", 43);
     p3.get<1>() = "Becker";
     cout << p3 << endl;
-    person3 p4 = boost::make_tuple ("Boris", "Schaeling", 43);
-    person3 p5 = boost::make_tuple ("Boris", "Becker", 43);
+    person p4 = boost::make_tuple ("Boris", "Schaeling", 43);
+    person p5 = boost::make_tuple ("Boris", "Becker", 43);
     cout << (p4 != p5) << endl;
-    
-	vector<string> v (100);
-    progress_display pd (v.size());
+    cout << p4 << endl;
+    cout << p5 << endl;
+    vector<string> vStr (100);
+    progress_display pd (vStr.size());
     vector<string>::iterator pos;
     
-    for (pos = v.begin(); pos != v.end(); ++pos)
+    for (pos = vStr.begin(); pos != vStr.end(); ++pos)
     {
-        cout << *pos << endl;
+		boost::this_thread::sleep(boost::posix_time::seconds(2));
         ++pd;
     }
-
-	vector<int> vInt(10);
-	Print<int> print;
-	fill(vInt.begin(), vInt.end(), 5);
-
-	cout << "Vector v:";
-	for_each(vInt.begin(), vInt.end(), print);
-	cout << endl;
-
-	cout << "Size of vInt= " << vInt.size() << endl;
-
-	cout << "vInt.clear" << endl;
-
-	vInt.clear();
-
-	cout << "Vector vInt : ";
-
-	for_each(vInt.begin(), vInt.end(), print);
-
-	cout << endl;
-
-	cout << "Size of vInt =" << vInt.size() << endl;
-
-	cout << "Vector vInt is " ;
-
-	vInt.empty() ? cout << "" : cout << "not";
-
-	cout << "empty" << endl;
-
-	typedef Member<string, double> M;
-	vector<M> vM;
-	vM.push_back(M("Linda", 7500));
-	vM.push_back(M("Robot", 8500));
-
-	vector<M>::iterator It = vM.begin();
-	cout << "Entire vector: " << endl;
-	
-	while (It !=vM.end())
-	{
-		(It++)->print();
-
-	}
-
-	cout << endl;
-
-	boost::system::error_code ec(14, cat);
-	std::cout << ec.value() << std::endl;
-	std::cout << ec.category().name() << std::endl;
+    
+    vector<int> vInt (10);
+    Print<int> print;
+    fill (vInt.begin(), vInt.end(), 5);
+    cout << "Vector vInt:";
+    for_each (vInt.begin(), vInt.end(), print);
+    cout << endl;
+    cout << "Size of vInt= " << vInt.size() << endl;
+    cout << "vInt.clear" << endl;
+    vInt.clear();
+    cout << "Vector vInt : ";
+    for_each (vInt.begin(), vInt.end(), print);
+    cout << endl;
+    cout << "Size of vInt =" << vInt.size() << endl;
+    cout << "Vector vInt is " ;
+    vInt.empty() ? cout << "" : cout << "not";
+    cout << "empty" << endl;
+    typedef Member<string, double> M;
+    vector<M> vM;
+    vM.push_back (M ("Linda", 7500));
+    vM.push_back (M ("Robot", 8500));
+    vector<M>::iterator It = vM.begin();
+    cout << "Entire vector: " << endl;
+    
+    while (It != vM.end())
+    {
+        (It++)->print();
+    }
+    
+    cout << endl;
 
 }
