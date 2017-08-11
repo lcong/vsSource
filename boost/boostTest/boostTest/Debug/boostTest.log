@@ -1,2 +1,4 @@
 ﻿  boostTest.cpp
-d:\vs2015_proj\boost\boosttest\boosttest\boosttest.cpp : fatal error C1041: 无法打开程序数据库“D:\vs2015_proj\boost\boostTest\boostTest\Debug\vc140.idb”；如果要将多个 CL.EXE 写入同一个 .PDB 文件，请使用 /FS
+e:\vs2015_proj\boost\boosttest\boosttest\boosttest.cpp(33): error C2694: “const char *application_category::name(void) const”: 重写虚函数的限制性异常规范比基类虚成员函数“const char *boost::system::error_category::name(void) noexcept const”少
+  e:\vs2015_proj\boost\boosttest\boosttest\boosttest.cpp(33): note: 参见“application_category::name”的声明
+  d:\boost_1_63_0\boost\system\error_code.hpp(190): note: 参见“boost::system::error_category::name”的声明
